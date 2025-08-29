@@ -1,4 +1,4 @@
-package com.prueba.bys.domain.ports.in;
+package com.prueba.bys.domain.ports.in.availability;
 
 import com.prueba.bys.domain.models.Availability;
 

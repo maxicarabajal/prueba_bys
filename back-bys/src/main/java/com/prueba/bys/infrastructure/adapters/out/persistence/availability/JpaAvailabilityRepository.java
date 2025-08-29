@@ -1,4 +1,4 @@
-package com.prueba.bys.infrastructure.adapters.out.persistence;
+package com.prueba.bys.infrastructure.adapters.out.persistence.availability;
 
 import com.prueba.bys.infrastructure.entities.AvailabilityEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

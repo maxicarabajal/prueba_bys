@@ -1,4 +1,4 @@
-package com.prueba.bys.infrastructure.adapters.out.persistence;
+package com.prueba.bys.infrastructure.adapters.out.persistence.availability;
 
 import com.prueba.bys.domain.models.Availability;
 import com.prueba.bys.domain.ports.out.AvailabilityRepositoryPort;
@@ -27,12 +27,12 @@ public class AvailabilityRepositoryAdapter implements AvailabilityRepositoryPort
 
     @Override
     public List<Availability> findAll() {
-        return List.of();
+        return jpaAvailabilityRepository.findAll().stream().map(mapper::toModel).toList();
     }
 
     @Override
     public Availability findById(Long id) {
-        return null;
+        return jpaAvailabilityRepository.findById(id).map(mapper::toModel).get();
     }
 
     @Override
