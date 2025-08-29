@@ -1,7 +1,7 @@
-package com.prueba.bys.application.usecases.availability;
+package com.prueba.bys.application.usecases;
 
 import com.prueba.bys.domain.models.Availability;
-import com.prueba.bys.domain.ports.in.availability.CreateAvailabilityUseCase;
+import com.prueba.bys.domain.ports.in.CreateAvailabilityUseCase;
 import com.prueba.bys.domain.ports.out.AvailabilityRepositoryPort;
 import com.prueba.bys.domain.services.AvailabilityDomainService;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,6 @@ public class CreateAvailabilityUseCaseImpl implements CreateAvailabilityUseCase 
     @Override
     public Availability create(Availability availability) {
         availabilityDomainService.validateDuplicatedName(availability.getName());
-
         return availabilityRepositoryPort.save(availability);
     }
 

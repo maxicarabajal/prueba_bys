@@ -1,7 +1,7 @@
-package com.prueba.bys.application.usecases.availability;
+package com.prueba.bys.application.usecases;
 
 import com.prueba.bys.domain.models.Availability;
-import com.prueba.bys.domain.ports.in.availability.GetAvailabilityUseCase;
+import com.prueba.bys.domain.ports.in.GetAvailabilityUseCase;
 import com.prueba.bys.domain.ports.out.AvailabilityRepositoryPort;
 import org.springframework.stereotype.Service;
 
