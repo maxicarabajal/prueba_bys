@@ -3,6 +3,7 @@ package com.prueba.bys.infrastructure.adapters.out.persistence.search;
 import com.prueba.bys.domain.models.Search;
 import com.prueba.bys.domain.ports.out.SearchRepositoryPort;
 import com.prueba.bys.infrastructure.entities.SearchEntity;
+import com.prueba.bys.infrastructure.exceptions.EntityNotFoundException;
 import com.prueba.bys.infrastructure.mappers.SearchMapper;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -37,7 +38,8 @@ public class SearchRepositoryAdapter implements SearchRepositoryPort {
     @Override
     public Search findById(Long id){
         return jpaSearchRepository.findById(id).
-                map(searchMapper::toModel).get();
+                map(searchMapper::toModel)
+                .orElseThrow( ()-> new EntityNotFoundException("Error, no se encontro la busqueda con id: "+id));
     }
 
     @Override
