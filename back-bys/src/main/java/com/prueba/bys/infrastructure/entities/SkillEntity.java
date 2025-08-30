@@ -3,8 +3,8 @@ package com.prueba.bys.infrastructure.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "hiring_modalities")
-public class HiringModalityEntity {
+@Table(name = "skills")
+public class SkillEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +14,7 @@ public class HiringModalityEntity {
     private String name;
 
     @Column(name = "enabled")
-    private boolean enabled;
+    private boolean isEnabled;
 
     public Long getId() {
         return id;
@@ -33,10 +33,10 @@ public class HiringModalityEntity {
     }
 
     public boolean isEnabled() {
-        return enabled;
+        return isEnabled;
     }
 
     public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+        isEnabled = enabled;
     }
 }

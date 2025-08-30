@@ -27,15 +27,15 @@ public class AvailabilityController {
     @PostMapping
     public ResponseEntity<AvailabilityResponseDTO> create(AvailabilityRequestDTO dto) {
         Availability response = createAvailabilityUseCase.create(mapper.toModel(dto));
-        URI location = buildURI(response);
+        URI location = buildURI(response.getId());
         return ResponseEntity.created(location).body(mapper.toDto(response));
     }
 
-    private static URI buildURI(Availability response) {
+    private static URI buildURI(Long id) {
         return ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(response.getId())
+                .buildAndExpand(id)
                 .toUri();
     }
 }
