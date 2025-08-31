@@ -11,7 +11,7 @@ public class AvailabilityDomainService {
     }
 
     public void validateDuplicatedName(String name) {
-        if (availabilityRepositoryPort.existByName(name)) {
+        if (availabilityRepositoryPort.existsByName(name)) {
             throw new DuplicatedNameException("Disponibilidad ya registrada.");
         }
     }

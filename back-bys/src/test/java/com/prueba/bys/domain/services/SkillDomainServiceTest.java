@@ -1,52 +1,51 @@
 package com.prueba.bys.domain.services;
 
 import com.prueba.bys.domain.exceptions.DuplicatedNameException;
-import com.prueba.bys.domain.ports.out.AvailabilityRepositoryPort;
+import com.prueba.bys.domain.ports.out.SkillRepositoryPort;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.*;
-
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class AvailabilityDomainServiceTest {
+class SkillDomainServiceTest {
     public static final String ANY_NAME = "any name";
 
     @Mock
-    private AvailabilityRepositoryPort availabilityRepositoryPort;
+    private SkillRepositoryPort skillRepositoryPort;
 
     @Test
     void shouldThrowDuplicatedNameException_whenNameAlreadyExists(){
         //GIVEN
-        AvailabilityDomainService sut = new AvailabilityDomainService(availabilityRepositoryPort);
-        when(availabilityRepositoryPort.existsByName(ANY_NAME)).thenReturn(true);
+        SkillDomainService sut = new SkillDomainService(skillRepositoryPort);
+        when(skillRepositoryPort.existsByName(ANY_NAME)).thenReturn(true);
 
         //WHEN
         Executable executable = () -> sut.validateDuplicatedName(ANY_NAME);
 
         //THEN
         DuplicatedNameException e = assertThrows(DuplicatedNameException.class, executable);
-        assertEquals("Disponibilidad ya registrada.", e.getMessage());
+        assertEquals("Skill ya registrado.", e.getMessage());
 
-        verify(availabilityRepositoryPort).existsByName(ANY_NAME);
+        verify(skillRepositoryPort).existsByName(ANY_NAME);
     }
-    
+
     @Test
     void shouldValidateDuplicatedNameSuccessfully_whenNameIsUnique(){
         //GIVEN
         String name = "any name";
-        AvailabilityDomainService sut = new AvailabilityDomainService(availabilityRepositoryPort);
-        when(availabilityRepositoryPort.existsByName(name)).thenReturn(false);
-        
+        SkillDomainService sut = new SkillDomainService(skillRepositoryPort);
+        when(skillRepositoryPort.existsByName(name)).thenReturn(false);
+
         //WHEN
         sut.validateDuplicatedName(name);
-        
-        //THEN
-        verify(availabilityRepositoryPort).existsByName(name);
-    }
 
+        //THEN
+        verify(skillRepositoryPort).existsByName(name);
+    }
 }

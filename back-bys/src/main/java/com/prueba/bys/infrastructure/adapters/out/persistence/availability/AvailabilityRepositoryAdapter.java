@@ -75,7 +75,7 @@ public class AvailabilityRepositoryAdapter implements AvailabilityRepositoryPort
     }
 
     @Override
-    public boolean existByName(String name) {
+    public boolean existsByName(String name) {
         return jpaAvailabilityRepository.existsByName(name);
     }
 }

@@ -17,5 +17,5 @@ public interface AvailabilityRepositoryPort {
 
     void logicalDeleteById(Long id);
 
-    boolean existByName(String name);
+    boolean existsByName(String name);
 }
