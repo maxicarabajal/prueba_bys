@@ -1,7 +1,7 @@
 package com.prueba.bys.domain.services;
 
 import com.prueba.bys.domain.exceptions.DuplicatedNameException;
-import com.prueba.bys.domain.ports.out.SkillRepositoryPort;
+import com.prueba.bys.domain.ports.out.HiringModalityRepositoryPort;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
@@ -13,38 +13,38 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class SkillDomainServiceTest {
+class HiringModalityDomainServiceTest {
     public static final String ANY_NAME = "any name";
 
     @Mock
-    private SkillRepositoryPort skillRepositoryPort;
+    private HiringModalityRepositoryPort hiringModalityRepositoryPort;
 
     @Test
     void shouldThrowDuplicatedNameException_whenNameAlreadyExists(){
         //GIVEN
-        SkillDomainService sut = new SkillDomainService(skillRepositoryPort);
-        when(skillRepositoryPort.existsByName(ANY_NAME)).thenReturn(true);
+        HiringModalityDomainService sut = new HiringModalityDomainService(hiringModalityRepositoryPort);
+        when(hiringModalityRepositoryPort.existsByName(ANY_NAME)).thenReturn(true);
 
         //WHEN
         Executable executable = () -> sut.validateDuplicatedName(ANY_NAME);
 
         //THEN
         DuplicatedNameException e = assertThrows(DuplicatedNameException.class, executable);
-        assertEquals("Skill ya registrado.", e.getMessage());
+        assertEquals("Modalidad de contratación ya registrada.", e.getMessage());
 
-        verify(skillRepositoryPort).existsByName(ANY_NAME);
+        verify(hiringModalityRepositoryPort).existsByName(ANY_NAME);
     }
 
     @Test
     void shouldValidateDuplicatedNameSuccessfully_whenNameIsUnique(){
         //GIVEN
-        SkillDomainService sut = new SkillDomainService(skillRepositoryPort);
-        when(skillRepositoryPort.existsByName(ANY_NAME)).thenReturn(false);
+        HiringModalityDomainService sut = new HiringModalityDomainService(hiringModalityRepositoryPort);
+        when(hiringModalityRepositoryPort.existsByName(ANY_NAME)).thenReturn(false);
 
         //WHEN
         sut.validateDuplicatedName(ANY_NAME);
 
         //THEN
-        verify(skillRepositoryPort).existsByName(ANY_NAME);
+        verify(hiringModalityRepositoryPort).existsByName(ANY_NAME);
     }
 }
