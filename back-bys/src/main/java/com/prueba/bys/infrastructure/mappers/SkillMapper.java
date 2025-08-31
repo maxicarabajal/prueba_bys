@@ -5,14 +5,12 @@ import com.prueba.bys.infrastructure.dto.skill.SkillRequestDTO;
 import com.prueba.bys.infrastructure.dto.skill.SkillResponseDTO;
 import com.prueba.bys.infrastructure.entities.SkillEntity;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public abstract class SkillMapper {
 
     public abstract Skill toModel(SkillEntity entity);
 
-    @Mapping(target = "enabled", ignore = true)
     public abstract Skill toModel(SkillRequestDTO dto);
 
     public abstract SkillEntity toEntity(Skill model);

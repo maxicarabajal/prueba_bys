@@ -3,12 +3,12 @@ package com.prueba.bys.domain.models;
 public class Skill {
     private Long id;
     private String name;
-    private boolean isEnabled;
+    private boolean enabled;
 
     public Skill(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.isEnabled = true;
+        this.enabled = true;
     }
 
     public Long getId() {
@@ -28,10 +28,10 @@ public class Skill {
     }
 
     public boolean isEnabled() {
-        return isEnabled;
+        return enabled;
     }
 
     public void setEnabled(boolean enabled) {
-        isEnabled = enabled;
+        this.enabled = enabled;
     }
 }

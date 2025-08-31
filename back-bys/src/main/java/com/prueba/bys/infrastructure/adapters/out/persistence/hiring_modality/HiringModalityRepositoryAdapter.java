@@ -54,9 +54,11 @@ public class HiringModalityRepositoryAdapter implements HiringModalityRepository
     @Override
     public HiringModality findById(Long id) {
         Optional<HiringModalityEntity> optional = jpaHiringModalityRepository.findById(id);
+
         if (optional.isPresent()) {
             return optional.map(mapper::toModel).get();
         }
+
         return null;
     }
 

@@ -3,6 +3,7 @@ package com.prueba.bys.infrastructure.dto.skill;
 public class SkillResponseDTO {
     private Long id;
     private String name;
+    private boolean enabled;
 
     public Long getId() {
         return id;
@@ -18,5 +19,13 @@ public class SkillResponseDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

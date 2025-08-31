@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "skills")
 public class SkillEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,7 +13,7 @@ public class SkillEntity {
     private String name;
 
     @Column(name = "enabled")
-    private boolean isEnabled;
+    private boolean enabled = true;
 
     public Long getId() {
         return id;
@@ -33,10 +32,10 @@ public class SkillEntity {
     }
 
     public boolean isEnabled() {
-        return isEnabled;
+        return enabled;
     }
 
     public void setEnabled(boolean enabled) {
-        isEnabled = enabled;
+        this.enabled = enabled;
     }
 }

@@ -12,7 +12,6 @@ public abstract class AvailabilityMapper {
 
     public abstract Availability toModel(AvailabilityEntity entity);
 
-//    @Mapping(target = "enabled", ignore = true)
     public abstract Availability toModel(AvailabilityRequestDTO dto);
 
     public abstract AvailabilityResponseDTO toDto(Availability model);

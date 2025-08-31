@@ -1,14 +1,15 @@
 package com.prueba.bys.domain.ports.out;
 
+import com.prueba.bys.domain.commons.PageResult;
 import com.prueba.bys.domain.models.Skill;
-
-import java.util.List;
 
 public interface SkillRepositoryPort {
 
     Skill save(Skill skill);
 
-    List<Skill> findAll();
+    PageResult<Skill> findAll(int page, int size, String sort);
+
+    PageResult<Skill> findAllEnabled(int page, int size, String sort);
 
     Skill findById(Long id);
 

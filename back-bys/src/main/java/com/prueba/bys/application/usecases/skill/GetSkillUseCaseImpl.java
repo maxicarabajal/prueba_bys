@@ -1,11 +1,10 @@
 package com.prueba.bys.application.usecases.skill;
 
+import com.prueba.bys.domain.commons.PageResult;
 import com.prueba.bys.domain.models.Skill;
 import com.prueba.bys.domain.ports.in.skill.GetSkillUseCase;
 import com.prueba.bys.domain.ports.out.SkillRepositoryPort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class GetSkillUseCaseImpl implements GetSkillUseCase {
@@ -16,12 +15,17 @@ public class GetSkillUseCaseImpl implements GetSkillUseCase {
     }
 
     @Override
-    public List<Skill> getAll() {
-        return skillRepositoryPort.findAll();
+    public PageResult<Skill> getAll(int page, int size, String sort) {
+        return skillRepositoryPort.findAll(page,size,sort);
+    }
+
+    @Override
+    public PageResult<Skill> getAllEnabled(int page, int size, String sort) {
+        return skillRepositoryPort.findAllEnabled(page, size, sort);
     }
 
     @Override
     public Skill getById(Long id) {
-        return null;
+        return skillRepositoryPort.findById(id);
     }
 }

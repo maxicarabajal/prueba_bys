@@ -1,12 +1,18 @@
 package com.prueba.bys.infrastructure.adapters.out.persistence.skill;
 
+import com.prueba.bys.domain.commons.PageResult;
 import com.prueba.bys.domain.models.Skill;
 import com.prueba.bys.domain.ports.out.SkillRepositoryPort;
 import com.prueba.bys.infrastructure.entities.SkillEntity;
 import com.prueba.bys.infrastructure.mappers.SkillMapper;
+import com.prueba.bys.infrastructure.utils.CustomSort;
+import com.prueba.bys.infrastructure.utils.PageMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SkillRepositoryAdapter implements SkillRepositoryPort {
@@ -26,13 +32,33 @@ public class SkillRepositoryAdapter implements SkillRepositoryPort {
     }
 
     @Override
-    public List<Skill> findAll() {
-        return jpaSkillRepository.findAll().stream().map(mapper::toModel).toList();
+    public PageResult<Skill> findAll(int page, int size, String sort) {
+        Pageable pageable = PageRequest.of(page, size, CustomSort.from(sort));
+
+        Page<SkillEntity> pagination = jpaSkillRepository.findAll(pageable);
+
+        return PageMapper.fromPage(pagination,mapper::toModel);
     }
 
     @Override
+    public PageResult<Skill> findAllEnabled(int page, int size, String sort) {
+        Pageable pageable = PageRequest.of(page, size, CustomSort.from(sort));
+
+        Page<SkillEntity> pagination = jpaSkillRepository.findAllByEnabledTrue(pageable);
+
+        return PageMapper.fromPage(pagination,mapper::toModel);
+    }
+
+
+    @Override
     public Skill findById(Long id) {
-        return jpaSkillRepository.findById(id).map(mapper::toModel).get();
+        Optional<SkillEntity> optional = jpaSkillRepository.findById(id);
+
+        if (optional.isPresent()) {
+            return optional.map(mapper::toModel).get();
+        }
+
+        return null;
     }
 
     @Override

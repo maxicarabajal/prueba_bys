@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AvailabilityRepositoryAdapter implements AvailabilityRepositoryPort {
@@ -29,7 +30,6 @@ public class AvailabilityRepositoryAdapter implements AvailabilityRepositoryPort
         AvailabilityEntity entity = mapper.toEntity(availability);
 
         AvailabilityEntity savedAvailability = jpaAvailabilityRepository.save(entity);
-        System.out.println(savedAvailability);
 
         return mapper.toModel(savedAvailability);
     }
@@ -55,7 +55,13 @@ public class AvailabilityRepositoryAdapter implements AvailabilityRepositoryPort
 
     @Override
     public Availability findById(Long id) {
-        return jpaAvailabilityRepository.findById(id).map(mapper::toModel).get();
+        Optional<AvailabilityEntity> optional = jpaAvailabilityRepository.findById(id);
+
+        if (optional.isPresent()) {
+            return optional.map(mapper::toModel).get();
+        }
+
+        return null;
     }
 
     @Override
