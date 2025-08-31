@@ -7,8 +7,10 @@ import com.prueba.bys.infrastructure.dto.availability.AvailabilityRequestDTO;
 import com.prueba.bys.infrastructure.dto.availability.AvailabilityResponseDTO;
 import com.prueba.bys.infrastructure.entities.AvailabilityEntity;
 import org.mapstruct.Mapper;
+
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
+
 
 @Mapper(componentModel = "spring")
 public abstract class AvailabilityMapper {

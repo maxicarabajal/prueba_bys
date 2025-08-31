@@ -1,6 +1,6 @@
-package com.prueba.bys.infrastructure.dto.availability;
+package com.prueba.bys.infrastructure.dto.skill;
 
-public class AvailabilityRequestDTO {
+public class SkillRequestDTO {
     private Long id;
     private String name;
 

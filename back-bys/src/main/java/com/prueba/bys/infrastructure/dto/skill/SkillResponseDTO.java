@@ -1,8 +1,9 @@
-package com.prueba.bys.infrastructure.dto.availability;
+package com.prueba.bys.infrastructure.dto.skill;
 
-public class AvailabilityRequestDTO {
+public class SkillResponseDTO {
     private Long id;
     private String name;
+    private boolean enabled;
 
     public Long getId() {
         return id;
@@ -18,5 +19,13 @@ public class AvailabilityRequestDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

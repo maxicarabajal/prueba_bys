@@ -13,6 +13,9 @@ public class AvailabilityEntity {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "enabled")
+    private boolean enabled = true;
+
     public Long getId() {
         return id;
     }
@@ -27,5 +30,13 @@ public class AvailabilityEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

@@ -1,9 +1,19 @@
-package com.prueba.bys.infrastructure.dto.availability;
+package com.prueba.bys.infrastructure.entities;
 
-public class AvailabilityResponseDTO {
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "skills")
+public class SkillEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name")
     private String name;
-    private boolean enabled;
+
+    @Column(name = "enabled")
+    private boolean enabled = true;
 
     public Long getId() {
         return id;

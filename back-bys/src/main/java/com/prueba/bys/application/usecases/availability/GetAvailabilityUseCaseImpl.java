@@ -1,5 +1,6 @@
 package com.prueba.bys.application.usecases.availability;
 
+import com.prueba.bys.domain.commons.PageResult;
 import com.prueba.bys.domain.models.Availability;
 import com.prueba.bys.domain.ports.in.availability.GetAvailabilityUseCase;
 import com.prueba.bys.domain.ports.out.AvailabilityRepositoryPort;
@@ -16,8 +17,13 @@ public class GetAvailabilityUseCaseImpl implements GetAvailabilityUseCase {
     }
 
     @Override
-    public List<Availability> getAll() {
-        return availabilityRepositoryPort.findAll();
+    public PageResult<Availability> getAll(int page, int size, String sort) {
+        return availabilityRepositoryPort.findAll(page, size, sort);
+    }
+
+    @Override
+    public PageResult<Availability> getAllEnabled(int page, int size, String sort) {
+        return availabilityRepositoryPort.findAllEnabled(page,size,sort);
     }
 
     @Override

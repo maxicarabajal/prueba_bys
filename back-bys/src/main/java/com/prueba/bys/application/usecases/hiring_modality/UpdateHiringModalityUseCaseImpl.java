@@ -22,7 +22,7 @@ public class UpdateHiringModalityUseCaseImpl implements UpdateHiringModalityUseC
         HiringModality foundHiringModality = hiringModalityRepositoryPort.findById(hiringModality.getId());
 
         if (foundHiringModality == null) {
-            throw new NotFoundException("Modalidad de búsqueda no encontrada.");
+            throw new NotFoundException("Modalidad de contratación no encontrada.");
         }
 
         hiringModalityDomainService.validateDuplicatedName(hiringModality.getName());

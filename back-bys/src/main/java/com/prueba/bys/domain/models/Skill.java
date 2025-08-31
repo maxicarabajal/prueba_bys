@@ -1,9 +1,15 @@
-package com.prueba.bys.infrastructure.dto.availability;
+package com.prueba.bys.domain.models;
 
-public class AvailabilityResponseDTO {
+public class Skill {
     private Long id;
     private String name;
     private boolean enabled;
+
+    public Skill(Long id, String name) {
+        this.id = id;
+        this.name = name;
+        this.enabled = true;
+    }
 
     public Long getId() {
         return id;

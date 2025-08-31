@@ -3,10 +3,12 @@ package com.prueba.bys.domain.models;
 public class HiringModality {
     private Long id;
     private String name;
+    private boolean enabled;
 
     public HiringModality(Long id, String name) {
         this.id = id;
         this.name = name;
+        this.enabled = true;
     }
 
     public Long getId() {
@@ -23,5 +25,13 @@ public class HiringModality {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
