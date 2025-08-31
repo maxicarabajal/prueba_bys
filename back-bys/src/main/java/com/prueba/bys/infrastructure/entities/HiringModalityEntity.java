@@ -14,7 +14,7 @@ public class HiringModalityEntity {
     private String name;
 
     @Column(name = "enabled")
-    private boolean enabled;
+    private boolean enabled = true;
 
     public Long getId() {
         return id;

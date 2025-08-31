@@ -21,15 +21,20 @@ public class UpdateAvailabilityUseCaseImpl implements UpdateAvailabilityUseCase 
     public Availability update(Availability availability) {
         Availability foundAvailability = availabilityRepositoryPort.findById(availability.getId());
 
-        if (foundAvailability == null) {
-            throw new NotFoundException("Disponibilidad no encontrada.");
-        }
+        validateNotFound(foundAvailability);
 
         availabilityDomainService.validateDuplicatedName(availability.getName());
 
         foundAvailability.setName(availability.getName());
 
         return availabilityRepositoryPort.save(foundAvailability);
+    }
+
+
+    private static void validateNotFound(Availability foundAvailability) {
+        if (foundAvailability == null) {
+            throw new NotFoundException("Disponibilidad no encontrada.");
+        }
     }
 
 }

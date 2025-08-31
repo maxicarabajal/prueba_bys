@@ -27,7 +27,9 @@ public class HiringModalityRepositoryAdapter implements HiringModalityRepository
     @Override
     public HiringModality save(HiringModality hiringModality) {
         HiringModalityEntity entity = mapper.toEntity(hiringModality);
+
         HiringModalityEntity savedHiringModality = jpaHiringModalityRepository.save(entity);
+
         return mapper.toModel(savedHiringModality);
     }
 

@@ -5,12 +5,14 @@ import com.prueba.bys.infrastructure.dto.availability.AvailabilityRequestDTO;
 import com.prueba.bys.infrastructure.dto.availability.AvailabilityResponseDTO;
 import com.prueba.bys.infrastructure.entities.AvailabilityEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public abstract class AvailabilityMapper {
 
     public abstract Availability toModel(AvailabilityEntity entity);
 
+//    @Mapping(target = "enabled", ignore = true)
     public abstract Availability toModel(AvailabilityRequestDTO dto);
 
     public abstract AvailabilityResponseDTO toDto(Availability model);

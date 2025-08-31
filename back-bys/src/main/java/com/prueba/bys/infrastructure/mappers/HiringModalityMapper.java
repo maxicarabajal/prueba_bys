@@ -16,7 +16,7 @@ public abstract class HiringModalityMapper {
 
     public abstract HiringModality toModel(HiringModalityEntity entity);
 
-    @Mapping(target = "enabled", ignore = true)
+//    @Mapping(target = "enabled", ignore = true)
     public abstract HiringModality toModel(HiringModalityRequestDTO dto);
 
     public abstract HiringModalityResponseDTO toDto(HiringModality model);
