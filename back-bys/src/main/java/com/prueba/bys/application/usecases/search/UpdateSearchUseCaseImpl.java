@@ -17,7 +17,7 @@ public class UpdateSearchUseCaseImpl implements UpdateSearchUseCase {
 
     @Override
     public Search update(Search search) {
-        if(search.getId() == null) throw new NotFoundException("no se encontro la busqueda con id: "+search.getId());
-        return searchRepositoryPort.save(search);
+        Search searchPersisted = searchRepositoryPort.findById(search.getId());
+        return searchRepositoryPort.save(searchPersisted);
     }
 }

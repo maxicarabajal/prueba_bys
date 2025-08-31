@@ -1,10 +1,13 @@
 package com.prueba.bys.infrastructure.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Where;
+
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "search")
+@Where(clause = "enabled = true")
 public class SearchEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,6 @@
 package com.prueba.bys.application.usecases.search;
 
+import com.prueba.bys.domain.models.Search;
 import com.prueba.bys.domain.ports.in.search.DeleteSearchUseCase;
 import com.prueba.bys.domain.ports.out.SearchRepositoryPort;
 import org.springframework.stereotype.Service;
@@ -15,11 +16,13 @@ public class DeleteSearchUseCaseImpl implements DeleteSearchUseCase {
 
     @Override
     public void deleteById(Long id) {
-        searchRepositoryPort.deleteById(id);
+        Search searchPersisted = searchRepositoryPort.findById(id);
+        searchRepositoryPort.deleteById(searchPersisted.getId());
     }
 
     @Override
     public void logicalDeleteById(Long id) {
-        searchRepositoryPort.logicalDeleteById(id);
+        Search searchPersisted = searchRepositoryPort.findById(id);
+        searchRepositoryPort.logicalDeleteById(searchPersisted.getId());
     }
 }

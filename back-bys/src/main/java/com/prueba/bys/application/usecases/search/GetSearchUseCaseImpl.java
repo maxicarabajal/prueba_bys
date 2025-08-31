@@ -18,9 +18,7 @@ public class GetSearchUseCaseImpl implements GetSearchUseCase {
 
     @Override
     public Search getById(Long id) {
-        Search search = searchRepositoryPort.findById(id);
-        if(search == null) throw new NotFoundException("no se encontro la busqueda con id: "+id);
-        return search;
+        return searchRepositoryPort.findById(id);
     }
 
     @Override

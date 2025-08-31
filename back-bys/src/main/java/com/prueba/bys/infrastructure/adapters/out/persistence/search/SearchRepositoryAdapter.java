@@ -4,6 +4,7 @@ import com.prueba.bys.domain.models.Search;
 import com.prueba.bys.domain.ports.out.SearchRepositoryPort;
 import com.prueba.bys.infrastructure.entities.SearchEntity;
 import com.prueba.bys.infrastructure.exceptions.EntityNotFoundException;
+import com.prueba.bys.infrastructure.exceptions.LogicalDeleteException;
 import com.prueba.bys.infrastructure.mappers.SearchMapper;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -49,7 +50,8 @@ public class SearchRepositoryAdapter implements SearchRepositoryPort {
 
     @Override
     public void logicalDeleteById(Long id) {
-        jpaSearchRepository.logicalDeleteById(id);
+        int rowsAffected = jpaSearchRepository.logicalDeleteById(id);
+        if(rowsAffected != 1) throw new LogicalDeleteException("No se pudo realizar el borrado lógico: filas afectadas = " + rowsAffected);
     }
 
     @Override
