@@ -1,6 +1,5 @@
 package com.prueba.bys.application.usecases.search;
 
-import com.prueba.bys.application.exceptions.NotFoundException;
 import com.prueba.bys.domain.models.Search;
 import com.prueba.bys.domain.ports.in.search.GetSearchUseCase;
 import com.prueba.bys.domain.ports.out.SearchRepositoryPort;

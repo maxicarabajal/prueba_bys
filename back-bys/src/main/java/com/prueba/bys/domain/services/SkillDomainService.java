@@ -1,5 +1,6 @@
 package com.prueba.bys.domain.services;
 
+import com.prueba.bys.domain.exceptions.DuplicatedNameException;
 import com.prueba.bys.domain.ports.out.SkillRepositoryPort;
 
 public class SkillDomainService {
@@ -10,6 +11,8 @@ public class SkillDomainService {
     }
 
     public void validateDuplicatedName(String name) {
-        skillRepositoryPort.existsByName(name);
+        if (skillRepositoryPort.existsByName(name)) {
+            throw new DuplicatedNameException("Skill ya registrado.");
+        }
     }
 }
