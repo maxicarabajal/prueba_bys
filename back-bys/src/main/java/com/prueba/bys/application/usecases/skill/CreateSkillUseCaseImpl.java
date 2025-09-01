@@ -11,9 +11,9 @@ public class CreateSkillUseCaseImpl implements CreateSkillUseCase {
     private final SkillRepositoryPort skillRepositoryPort;
     private final SkillDomainService skillDomainService;
 
-    public CreateSkillUseCaseImpl(SkillRepositoryPort skillRepositoryPort, SkillDomainService skillDomainService) {
+    public CreateSkillUseCaseImpl(SkillRepositoryPort skillRepositoryPort) {
         this.skillRepositoryPort = skillRepositoryPort;
-        this.skillDomainService = skillDomainService;
+        this.skillDomainService = new SkillDomainService(this.skillRepositoryPort);
     }
 
     @Override

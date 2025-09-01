@@ -12,9 +12,9 @@ public class UpdateSkillUseCaseImpl implements UpdateSkillUseCase {
     private final SkillRepositoryPort skillRepositoryPort;
     private final SkillDomainService skillDomainService;
 
-    public UpdateSkillUseCaseImpl(SkillRepositoryPort skillRepositoryPort, SkillDomainService skillDomainService) {
+    public UpdateSkillUseCaseImpl(SkillRepositoryPort skillRepositoryPort) {
         this.skillRepositoryPort = skillRepositoryPort;
-        this.skillDomainService = skillDomainService;
+        this.skillDomainService = new SkillDomainService(this.skillRepositoryPort);
     }
 
 

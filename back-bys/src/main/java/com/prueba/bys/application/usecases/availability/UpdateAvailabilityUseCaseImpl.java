@@ -12,9 +12,9 @@ public class UpdateAvailabilityUseCaseImpl implements UpdateAvailabilityUseCase 
     private final AvailabilityRepositoryPort availabilityRepositoryPort;
     private final AvailabilityDomainService availabilityDomainService;
 
-    public UpdateAvailabilityUseCaseImpl(AvailabilityRepositoryPort availabilityRepositoryPort, AvailabilityDomainService availabilityDomainService) {
+    public UpdateAvailabilityUseCaseImpl(AvailabilityRepositoryPort availabilityRepositoryPort) {
         this.availabilityRepositoryPort = availabilityRepositoryPort;
-        this.availabilityDomainService = availabilityDomainService;
+        this.availabilityDomainService = new AvailabilityDomainService(this.availabilityRepositoryPort);
     }
 
     @Override

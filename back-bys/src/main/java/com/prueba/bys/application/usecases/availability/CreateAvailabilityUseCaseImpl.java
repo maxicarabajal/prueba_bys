@@ -11,9 +11,9 @@ public class CreateAvailabilityUseCaseImpl implements CreateAvailabilityUseCase 
     private final AvailabilityRepositoryPort availabilityRepositoryPort;
     private final AvailabilityDomainService availabilityDomainService;
 
-    public CreateAvailabilityUseCaseImpl(AvailabilityRepositoryPort availabilityRepositoryPort, AvailabilityDomainService availabilityDomainService) {
+    public CreateAvailabilityUseCaseImpl(AvailabilityRepositoryPort availabilityRepositoryPort) {
         this.availabilityRepositoryPort = availabilityRepositoryPort;
-        this.availabilityDomainService = availabilityDomainService;
+        this.availabilityDomainService = new AvailabilityDomainService(this.availabilityRepositoryPort);
     }
 
 

@@ -11,12 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class CreateSearchUseCaseImpl implements CreateSearchUseCase {
 
     private final SearchRepositoryPort searchRepositoryPort;
-    private final SearchDomainService domainService;
+    private final SearchDomainService searchDomainService;
 
-    public CreateSearchUseCaseImpl(SearchRepositoryPort searchRepositoryPort,
-                                   SearchDomainService domainService){
+    public CreateSearchUseCaseImpl(SearchRepositoryPort searchRepositoryPort){
         this.searchRepositoryPort = searchRepositoryPort;
-        this.domainService = domainService;
+        this.searchDomainService = new SearchDomainService(this.searchRepositoryPort);
     }
 
     @Transactional
@@ -24,7 +23,7 @@ public class CreateSearchUseCaseImpl implements CreateSearchUseCase {
     public Search create(Search search) {
         Search newSearch = searchRepositoryPort.save(search);
         newSearch.setName(newSearch.generateName());
-        domainService.validateDuplicatedName(newSearch.getName());
+        searchDomainService.validateDuplicatedName(newSearch.getName());
         return searchRepositoryPort.save(newSearch);
     }
 

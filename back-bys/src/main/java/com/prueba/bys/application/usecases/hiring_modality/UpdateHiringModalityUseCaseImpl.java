@@ -12,9 +12,9 @@ public class UpdateHiringModalityUseCaseImpl implements UpdateHiringModalityUseC
     private final HiringModalityRepositoryPort hiringModalityRepositoryPort;
     private final HiringModalityDomainService hiringModalityDomainService;
 
-    public UpdateHiringModalityUseCaseImpl(HiringModalityRepositoryPort hiringModalityRepositoryPort, HiringModalityDomainService hiringModalityDomainService) {
+    public UpdateHiringModalityUseCaseImpl(HiringModalityRepositoryPort hiringModalityRepositoryPort) {
         this.hiringModalityRepositoryPort = hiringModalityRepositoryPort;
-        this.hiringModalityDomainService = hiringModalityDomainService;
+        this.hiringModalityDomainService = new HiringModalityDomainService(this.hiringModalityRepositoryPort);
     }
 
     @Override
